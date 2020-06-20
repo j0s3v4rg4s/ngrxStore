@@ -42,8 +42,34 @@ const productReducer = createReducer(
       ...state,
       listProducts,
       productsToBuy,
+      productSelected: { ...product, quantity: product.quantity + 1 },
       total: state.total + product.price,
     };
+  }),
+  on(productActions.removeProduct, (state, { product }) => {
+    if (product.quantity === 0) {
+      return { ...state };
+    } else {
+      const listProducts = state.listProducts.map((prod) =>
+        prod.id === product.id ? { ...prod, quantity: prod.quantity - 1 } : prod
+      );
+      const productsToBuy = state.productsToBuy
+        .filter(
+          (prod) => !(prod.id === product.id) || !(product.quantity === 1)
+        )
+        .map((prod) =>
+          prod.id === product.id
+            ? { ...prod, quantity: prod.quantity - 1 }
+            : prod
+        );
+      return {
+        ...state,
+        listProducts,
+        productsToBuy,
+        total: state.total - product.price,
+        productSelected: { ...product, quantity: product.quantity - 1 },
+      };
+    }
   })
 );
 export function reducer(state: ProductsState, action: Action) {

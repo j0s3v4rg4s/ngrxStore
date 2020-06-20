@@ -6,6 +6,7 @@ const group = '[Products]';
 
 export const SELECT_PRODUCT = group + 'select';
 export const ADD_PRODUCT = group + 'add';
+export const REMOVE_PRODUCT = group + 'remove';
 
 
 export const selectProductAction = createAction(
@@ -14,6 +15,10 @@ export const selectProductAction = createAction(
 );
 export const addProduct = createAction(
   ADD_PRODUCT,
+  props<{ product: ProductModel }>()
+);
+export const removeProduct = createAction(
+  REMOVE_PRODUCT,
   props<{ product: ProductModel }>()
 );
 

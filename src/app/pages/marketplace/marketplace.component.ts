@@ -34,4 +34,8 @@ export class MarketplaceComponent {
   addProduct(product: ProductModel) {
     this.store.dispatch(productActions.addProduct({ product }));
   }
+
+  removeProduct(product: ProductModel) {
+    this.store.dispatch(productActions.removeProduct({ product }));
+  }
 }

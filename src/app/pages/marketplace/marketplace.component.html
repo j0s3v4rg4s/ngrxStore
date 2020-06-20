@@ -34,7 +34,7 @@
           {{productSelected.description}}
         </p>
         <div class="product-selected__price">
-          <button mat-icon-button color="accent">
+          <button mat-icon-button color="accent" (click)="removeProduct(productSelected)">
             <mat-icon>remove_circle</mat-icon>
           </button>
           <span style="text-align: center">{{productSelected.price | currency}}</span>
