@@ -1,6 +1,7 @@
 import {ProductModel} from '../../models/product.model';
 import {PRODUCTS} from '../../mock/producst.mock';
-import { createReducer,  Action} from '@ngrx/store';
+import { createReducer,  Action, on} from '@ngrx/store';
+import * as productActions from './product.action';
 
 
 export interface ProductsState {
@@ -16,7 +17,8 @@ const initialState: ProductsState = {
 };
 
 const productReducer = createReducer(
-  initialState
+  initialState,
+  on(productActions.selectProductAction, (state, {product}) => ({...state, productSelected: product}))
 );
 
 export function reducer(state: ProductsState, action: Action) {

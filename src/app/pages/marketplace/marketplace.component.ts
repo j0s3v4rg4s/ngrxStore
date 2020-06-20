@@ -4,6 +4,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {ProductModel} from '../../models/product.model';
 import {State} from '../../reducers';
+import * as productActions from '../../reducers/products/product.action';
 
 
 @Component({
@@ -15,9 +16,16 @@ export class MarketplaceComponent {
 
   readonly products = PRODUCTS;
   products$: Observable<ProductModel[]>;
+  productSelected$: Observable<ProductModel>;
 
   constructor(private store: Store<State>) {
     this.products$ = store.select(data => data.products.listProducts);
+    this.productSelected$ = store.select(data => data.products.productSelected);
+    this.productSelected$.subscribe(data => console.log(data));
+  }
+
+  openProduct(product: ProductModel) {
+    this.store.dispatch(productActions.selectProductAction({product}));
   }
 
 }
