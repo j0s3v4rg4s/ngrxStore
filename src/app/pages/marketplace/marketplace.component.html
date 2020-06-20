@@ -8,7 +8,7 @@
 
 <div class="content">
   <div class="list-products">
-    <mat-card *ngFor="let product of products">
+    <mat-card *ngFor="let product of products$ | async">
       <img src="assets/img/{{product.img}}" class="list-products__img">
       <mat-card-content>
         <h1 mat-card-title class="list-products__name">

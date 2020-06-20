@@ -3,4 +3,5 @@ export interface ProductModel {
   img: string;
   price: number;
   description: string;
+  quantity?: number;
 }
