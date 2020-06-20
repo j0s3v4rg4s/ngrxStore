@@ -7,12 +7,14 @@ import * as productActions from './product.action';
 export interface ProductsState {
   listProducts: ProductModel[];
   productSelected: ProductModel;
+  productsToBuy: ProductModel[];
   total: number;
 }
 
 const initialState: ProductsState = {
   listProducts: PRODUCTS,
   productSelected: null,
+  productsToBuy: [],
   total: 0
 };
 

@@ -21,7 +21,6 @@ export class MarketplaceComponent {
   constructor(private store: Store<State>) {
     this.products$ = store.select(data => data.products.listProducts);
     this.productSelected$ = store.select(data => data.products.productSelected);
-    this.productSelected$.subscribe(data => console.log(data));
   }
 
   openProduct(product: ProductModel) {

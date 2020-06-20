@@ -8,7 +8,7 @@
 
 <div class="content">
   <div class="list-products">
-    <mat-card *ngFor="let product of products$ | async">
+    <mat-card *ngFor="let product of products$ | async" [class.active]="(productSelected$ | async)?.id === product.id">
       <img src="assets/img/{{product.img}}" class="list-products__img">
       <mat-card-content>
         <h1 mat-card-title class="list-products__name">
@@ -19,21 +19,24 @@
     </mat-card>
   </div>
 
-  <div class="product-selected">
+
+
+
+  <div class="product-selected" *ngIf="(productSelected$ | async) as productSelected">
     <mat-card>
-      <img src="assets/img/{{products[0].img}}" class="list-products__img">
+      <img src="assets/img/{{productSelected.img}}" class="list-products__img">
       <mat-card-content>
         <h1 mat-card-title class="list-products__name">
-          {{products[0].name}}
+          {{productSelected.name}}
         </h1>
         <p>
-          {{products[0].description}}
+          {{productSelected.description}}
         </p>
         <div class="product-selected__price">
           <button mat-icon-button color="accent">
             <mat-icon>remove_circle</mat-icon>
           </button>
-          <span style="text-align: center">{{products[0].price | currency}}</span>
+          <span style="text-align: center">{{productSelected.price | currency}}</span>
           <button mat-icon-button color="accent">
             <mat-icon>add_circle</mat-icon>
           </button>
@@ -41,6 +44,9 @@
       </mat-card-content>
     </mat-card>
   </div>
+
+
+
 
 </div>
 
