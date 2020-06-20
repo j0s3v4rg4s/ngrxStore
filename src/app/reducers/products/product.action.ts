@@ -5,10 +5,16 @@ import {ProductModel} from '../../models/product.model';
 const group = '[Products]';
 
 export const SELECT_PRODUCT = group + 'select';
+export const ADD_PRODUCT = group + 'add';
 
 
 export const selectProductAction = createAction(
   SELECT_PRODUCT,
-  props<{product: ProductModel}>()
+  props<{ product: ProductModel }>()
 );
+export const addProduct = createAction(
+  ADD_PRODUCT,
+  props<{ product: ProductModel }>()
+);
+
 
