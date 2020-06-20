@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './reducers';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
