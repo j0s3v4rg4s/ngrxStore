@@ -1,0 +1,46 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="toolbar__text">Lista de productos</span>
+  <button mat-icon-button>
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>
+
+
+<div class="content">
+  <div class="list-products">
+    <mat-card *ngFor="let product of products" style="position: relative" matBadge="8" matBadgeColor="accent" class="active">
+      <img src="assets/img/{{product.img}}" class="list-products__img">
+      <mat-card-content>
+        <h1 mat-card-title class="list-products__name">
+          {{product.name}}
+        </h1>
+        <button mat-raised-button color="primary">Detalle</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="product-selected">
+    <mat-card style="position: relative">
+      <img src="assets/img/{{products[0].img}}" class="list-products__img">
+      <mat-card-content>
+        <h1 mat-card-title class="list-products__name">
+          {{products[0].name}}
+        </h1>
+        <p>
+          {{products[0].description}}
+        </p>
+        <div class="product-selected__price">
+          <button mat-icon-button color="accent">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+          <span style="text-align: center">{{products[0].price | currency}}</span>
+          <button mat-icon-button color="accent">
+            <mat-icon>add_circle</mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
+
